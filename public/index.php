@@ -5,7 +5,6 @@
 //imports des tools
 
 //imports des controllers
-include '../controller/home_controller.php';
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 
