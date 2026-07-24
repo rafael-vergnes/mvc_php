@@ -5,9 +5,11 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+        <link rel="stylesheet" href="../assets/style/main.css">
     <title>Ajouter une categorie</title>
 </head>
 <body>
+    <?php include 'components/navbar.php'; ?>
     <main class="container-fluid">
         <h1>Ajouter une categorie</h1>
         <form action="" method="post">
