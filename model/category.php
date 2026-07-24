@@ -39,3 +39,21 @@ function is_category_exists(string $category): bool {
     }
     return true;
 }
+
+function get_all_categories(): array {
+    try {
+        //1 Ecrire la requête
+        $sql = "SELECT c.id, c.category_name FROM category AS c";
+        //2 Se connecter à la BDD
+        $bdd = connect_bdd();
+        //3 Préparer la requête
+        $request = $bdd->prepare($sql);
+        //4 Exécuter la requête
+        $request->execute();
+        //5 Récupérer la réponse de la BDD
+        $categories = $request->fetchAll(PDO::FETCH_ASSOC);
+    } catch(Exception $e) {
+        echo $e->getMessage();
+    }
+    return $categories ?? [];
+}
