@@ -1,13 +1,18 @@
 <?php
 //import des outils
-include '../vendor/autoload.php';
+// include '../vendor/autoload.php';
 //imports des variables d'environnements
 include '../env.php';
 //imports des tools
 include '../tools/bdd_connect.php';
 include '../tools/security.php';
+include '../model/category.php';
+include '../model/book.php';
 
 //imports des controllers
+include '../controller/home_controller.php';
+include '../controller/category_controller.php';
+include '../controller/book_controller.php';
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 

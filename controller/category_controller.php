@@ -1,6 +1,4 @@
 <?php
-//import du model (category)
-include '../model/category.php';
 
 function add_category(): void {
     //test si le formulaire est submit
