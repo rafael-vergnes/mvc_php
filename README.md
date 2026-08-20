@@ -10,7 +10,12 @@ const BDD_HOST = "";
 const BDD_USERNAME = "";
 const BDD_PASSWORD = "";
 ```
-## 2 démarrer le projet
+## 2 installer les dépendances 
+```sh
+composer install
+```
+
+## 3 démarrer le projet
 ```sh
 php -S 127.0.0.1:8000 -t public
 ```

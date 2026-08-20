@@ -6,18 +6,20 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
         <link rel="stylesheet" href="../assets/style/main.css">
-    <title>Accueil</title>
+    <title>Ajouter une categorie</title>
 </head>
 <body>
     <?php include 'components/navbar.php'; ?>
-    <main>
-        <h1>Bienvenue sur notre super site en MVC</h1>
-        <h2>Bonjour <?= $nom ?? ""?></h2>
+    <main class="container-fluid">
+        <h1>Ajouter une categorie</h1>
         <form action="" method="post">
-            <input type="text" name="prenom">
-            <input type="submit" value="envoyer" name="submit">
+            <fieldset>
+                <label for="category_name">Saisir le nom de la categorie</label>
+                <input type="text" name="category_name">
+                <input type="submit" value="ajouter" name="submit">
+            </fieldset>
         </form>
-        <h2>Vous vous appelez : <?= $prenom ?? "" ?></h2>
+        <p><?= $message ?? "" ?></p>
     </main>
 </body>
 </html>
