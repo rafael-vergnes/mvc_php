@@ -1,27 +1,28 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-        <link rel="stylesheet" href="../assets/style/main.css">
-    <title>Ajouter une categorie</title>
+    <title>Se connecter</title>
 </head>
-<body>
+
+<body>    
     <?php include 'components/navbar.php'; ?>
-    <?= $_SESSION["prenom"] ?? "" ?>
     <main class="container-fluid">
-        <h1>Ajouter une categorie</h1>
+        <h1>Créer un compte</h1>
         <form action="" method="post">
-            <input type="hidden" name="csrf_token" value="<?= getCsrfToken() ?>">
             <fieldset>
-                <label for="category_name">Saisir le nom de la categorie</label>
-                <input type="text" name="category_name">
-                <input type="submit" value="ajouter" name="submit">
+                <input type="hidden" name="csrf_token" value="<?= getCsrfToken() ?>">
+                <label>Saisir le mail <input type="email" name="email"></label>
+                <label>Saisir le mot de passe<input type="password" name="password"></label>
             </fieldset>
+            <input type="submit" value="enregistrer" name="submit">
         </form>
         <p><?= $message ?? "" ?></p>
     </main>
 </body>
+
 </html>

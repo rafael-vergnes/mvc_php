@@ -12,10 +12,12 @@
 
 <body>
     <?php include 'components/navbar.php'; ?>
+    <?= $_SESSION["prenom"] ?? "" ?>
     <main class="container-fluid">
         <h1>Ajouter un livre</h1>
         <form action="" method="post">
             <p><?= htmlspecialchars($message ?? "") ?></p>
+            <input type="hidden" name="csrf_token" value="<?= getCsrfToken() ?>">
             <fieldset>
                 <label>Saisir le titre du livre<input type="text" name="title"></label>
                 <label>Saisir le résumé<textarea name="summary"></textarea></label>

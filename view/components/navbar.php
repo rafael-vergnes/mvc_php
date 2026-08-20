@@ -4,6 +4,7 @@
   </ul>
   <ul>
     <li><a href="/" class="secondary">Accueil</a></li>
+    <?php if (isset($_SESSION["status"])) : ?>
     <li>
       <details class="dropdown">
         <summary>
@@ -25,6 +26,8 @@
         </ul>
       </details>
     </li>
+    <li><a href="/logout" class="secondary">Déconnexion</a></li>
+    <?php else :?>
     <li>
       <details class="dropdown">
         <summary>
@@ -35,6 +38,7 @@
           <li><a href="/register">Inscription</a></li>
         </ul>
       </details>
-    </li>
+    </li> 
+    <?php endif ?>
   </ul>
 </nav>

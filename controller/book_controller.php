@@ -1,36 +1,41 @@
 <?php
 
-//include '../model/category.php';
-include '../model/book.php';
-
-function add_book(): void {
+function add_book(): void
+{
+    is_granted();
     $categories = get_all_categories();
-    
+
     //gestion du formulaire
     if (isset($_POST["submit"])) {
-        //vérifier si les champs existe
-        if (
-            !empty($_POST["title"]) && 
-            !empty($_POST["summary"]) && 
-            !empty($_POST["author"]) && 
-            !empty($_POST["published_at"]) && 
-            !empty($_POST["category_id"])
+
+        if (isset($_POST["csrf_token"]) && isCsrfTokenValid($_POST)) {
+
+            //vérifier si les champs existe
+            if (
+                !empty($_POST["title"]) &&
+                !empty($_POST["summary"]) &&
+                !empty($_POST["author"]) &&
+                !empty($_POST["published_at"]) &&
+                !empty($_POST["category_id"])
             ) {
-            //nettoyer les données
-            $_POST = sanitize_array($_POST);
-            //tester si le champs summary est plus petit que 255
-            if (strlen($_POST["summary"]) <= 255) {
-                //ajouter à la bdd
-                if (create_book($_POST) > 0 ) {
-                    $message = "Le livre " . $_POST["title"] . " a été ajouté";
+                //nettoyer les données
+                $_POST = sanitize_array($_POST);
+                //tester si le champs summary est plus petit que 255
+                if (strlen($_POST["summary"]) <= 255) {
+                    //ajouter à la bdd
+                    if (create_book($_POST) > 0) {
+                        $message = "Le livre " . $_POST["title"] . " a été ajouté";
+                    } else {
+                        $message = "Erreur d'enregistrement";
+                    }
                 } else {
-                    $message = "Erreur d'enregistrement";
+                    $message = "Le résumé est trop long";
                 }
             } else {
-                $message = "Le résumé est trop long";
+                $message = "Veuillez remplir tous les champs du formulaire";
             }
-        } else {
-            $message = "Veuillez remplir tous les champs du formulaire";
+        } {
+            $message = "Le token csrf est invalide";
         }
     }
     include '../view/template_add_book.php';
